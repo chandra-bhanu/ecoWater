@@ -15,7 +15,7 @@ import 'dart:async' show Future;
 
 Future<All> fetchEntries() async
 {
-  final response = await rootBundle.loadString('assets/json/deliveryList.json');
+  final response = await rootBundle.loadString('assets/json/deliveryEntryList.json');
   if(response != '')
     {
     //  print(response);
@@ -74,6 +74,9 @@ class _CustomersDetailsState extends State<CustomersDetails> {
       viewVisible = false ;
     });
   }
+
+
+
 
   _CustomersDetailsState()
   {
@@ -681,72 +684,120 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                       Container(
                                                           color:Color(0xFFDDDDDD),
                                                         height: 1,
-                                                        margin: const EdgeInsets.all(10),
+                                                        margin: const EdgeInsets.only(top:10.0,bottom:0.0,left:0.0,right:0.0),
                                                       ),
 
-                                                        //2nd
-                                                        Row(
+                                                        Center(
+                                                          child: Column(children:[
+                                                              Container(
+                                                                padding: EdgeInsets.all(10),
+                                                                child: Table(
+                                                                //  border: TableBorder.all(),
+                                                                 // columnWidths: const {0: FractionColumnWidth(.4), 1: FractionColumnWidth(.2), 2: FractionColumnWidth(.2)},
+                                                                  children: [
+                                                                      TableRow( children: [
+                                                                        Center(child: Text('Delivered',style:TextStyle(fontSize: 16,color:Colors.cyan,fontWeight:FontWeight.bold))),
+                                                                        Center(child: Text('Jars Collected',style:TextStyle(fontSize: 16,color:Colors.cyan,fontWeight:FontWeight.bold))),
+                                                                      ]),
+                                                                    TableRow( children: [
+
+                                                                        Row(
+                                                                          mainAxisAlignment: MainAxisAlignment.center,
+                                                                          children: [
+                                                                            JarIcons('Chilled',AppIcons.chilledJarOut, 50, 50),
+                                                                            Text('X ${item.deliveryJarOut.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                          ],
+                                                                        ),
+
+
+                                                                       Row(
+                                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                                            children: [
+                                                                              JarIcons('Chilled',AppIcons.chilledJarIn, 50, 50),
+                                                                              Text('X ${item.deliveryJarIn.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                            ],
+                                                                          ),
+
+                                                                    ]),
+                                                                    TableRow( children: [
+                                                                      Row(
+                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                        children: [
+                                                                          JarIcons('Normal',AppIcons.normalJarOut, 50, 50),
+                                                                          Text('X ${item.deliveryJarOut.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                        ],
+                                                                      ),
+                                                                      Row(
+                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                        children: [
+                                                                          JarIcons('Normal',AppIcons.normalJarIn, 50, 50),
+                                                                          Text('X ${item.deliveryJarIn.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                        ],
+                                                                      ),
+                                                                    ]),
+                                                                    TableRow( children: [
+                                                                      Row(
+                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                        children: [
+                                                                          JarIcons('NC Jar',AppIcons.mixJarIn, 50, 50),
+                                                                          Text('X ${item.deliveryJarOut.nc} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                        ],
+                                                                      ),
+                                                                      Row(
+                                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                                        children: [
+                                                                         // JarIcons('NC Jar',AppIcons.mixJarOut, 50, 50),
+                                                                          Text('-'),
+                                                                        ],
+                                                                      )
+                                                                    ]),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                          ]),
+                                                        ),
+                                                          // Time and Name
+                                                      Container(
+                                                        color:Color(0xFFDDDDDD),
+                                                        height: 1,
+                                                          margin: const EdgeInsets.only(top:10.0,bottom:0.0,left:0.0,right:0.0),
+                                                      ),
+                                                      Container(
+                                                        child:Row(
                                                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                          children: [
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                JarIcons('Chilled',AppIcons.chilledJarIn, 50, 50),
-                                                                Text('X ${item.deliveryJarIn.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                              ],
+                                                          children:[
+                                                            Chip(
+                                                              avatar: CircleAvatar(
+                                                                backgroundColor: Colors.grey.shade800,
+                                                                child: const Text('\u{20B9}'),
+                                                              ),
+                                                              label:  Text('${item.deliveryPayments.amount}'),
                                                             ),
-                                                            Row(
-                                                              mainAxisAlignment: MainAxisAlignment.start,
-                                                              children: [
-                                                                JarIcons('Chilled',AppIcons.chilledJarOut, 50, 50),
-                                                                Text('X ${item.deliveryJarOut.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                              ],
+                                                            Chip(
+                                                              avatar: CircleAvatar(
+                                                                backgroundColor: Colors.grey.shade800,
+                                                                child: Icon(
+                                                                  Icons.wb_sunny_sharp,
+                                                                  color:  (item.deliveryPayments.status =='paid'?Colors.green:Colors.red),
+                                                                  size: 20.0,
+                                                                ),
+                                                              ),
+                                                              label:  Text('${item.deliveryPayments.status}'),
                                                             ),
+                                                            Chip(
+                                                              avatar: CircleAvatar(
+                                                                backgroundColor: Colors.grey.shade800,
+                                                                child: Icon(
+                                                                  Icons.account_balance,
+                                                                  color: Colors.amber,
+                                                                  size: 15.0,
+                                                                ),
+                                                              ),
+                                                              label:  Text(item.deliveryPayments.mode ==''?'N/A':item.deliveryPayments.mode),
+                                                            )
                                                           ],
                                                         ),
-
-                                                      //2nd
-                                                      Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              JarIcons('Normal',AppIcons.normalJarIn, 50, 50),
-                                                              Text('X ${item.deliveryJarIn.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              JarIcons('Normal',AppIcons.normalJarOut, 50, 50),
-                                                              Text('X ${item.deliveryJarOut.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                            ],
-                                                          ),
-                                                        ],
                                                       ),
-                                                      //2nd
-                                                      Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                        children: [
-                                                          Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                              JarIcons('NC Jar',AppIcons.mixJarIn, 50, 50),
-                                                              Text('X ${item.deliveryJarIn.nc} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                            ],
-                                                          ),
-                                                          Row(
-                                                            mainAxisAlignment: MainAxisAlignment.start,
-                                                            children: [
-                                                             // JarIcons('Normal',AppIcons.normalJarOut, 50, 50),
-                                                            //  Text('X ${item.deliveryJarOut.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
-                                                            ],
-                                                          ),
-                                                        ],
-                                                      ),
-                                                          // Time and Name
-
                                                     ],
                                               ),
                                       ),

@@ -69,7 +69,7 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/json/deliveryList.json
+    - assets/json/deliveryEntryList.json
 
   fonts:
     - family: Roboto

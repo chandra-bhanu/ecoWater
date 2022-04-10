@@ -4,14 +4,14 @@
   "count":2,
   "deliveries":[{
     "details":{"time":"7:15 AM","deliveryPerson":"Paul"},
-    "jarIn":{"Normal":4,"Chilled":3,"Nc":2},
-    "jarOut":{"Normal":1,"Chilled":2},
+    "jarOut":{"Normal":4,"Chilled":3,"Nc":2},
+    "jarIn":{"Normal":1,"Chilled":2},
     "payments":{"status":"paid","amount":"520.00","via":"cash"}
   },
     {
       "details":{"time":"9:00 PM","deliveryPerson":"Johny"},
-      "jarIn":{"Normal":4,"Chilled":0,"Nc":0},
-      "jarOut":{"Normal":1,"Chilled":0},
+      "jarOut":{"Normal":4,"Chilled":0,"Nc":0},
+      "jarIn":{"Normal":1,"Chilled":0},
       "payments":{"status":"unpaid","amount":"60.00","via":""}
     }
   ]
@@ -23,8 +23,8 @@
     "count":1,
     "deliveries":[{
       "details":{"time":"7:15 AM","deliveryPerson":"Paul"},
-      "jarIn":{"Normal":4,"Chilled":3,"Nc":2},
-      "jarOut":{"Normal":1,"Chilled":2},
+      "jarOut":{"Normal":4,"Chilled":3,"Nc":2},
+      "jarIn":{"Normal":1,"Chilled":2},
       "payments":{"status":"paid","amount":"520.00","via":"cash"}
     }]
 
@@ -36,8 +36,8 @@
     "count":1,
     "deliveries":[{
       "details":{"time":"7:15 AM","deliveryPerson":"Paul"},
-      "jarIn":{"Normal":0,"Chilled":0,"Nc":2},
-      "jarOut":{"Normal":1,"Chilled":2},
+      "jarOut":{"Normal":0,"Chilled":0,"Nc":2},
+      "jarIn":{"Normal":1,"Chilled":2},
       "payments":{"status":"unpaid","amount":"0.00","via":""}
     }]
 
@@ -48,26 +48,26 @@
     "count":4,
     "deliveries":[{
       "details":{"time":"7:15 AM","deliveryPerson":"Paul"},
-      "jarIn":{"Normal":4,"Chilled":3,"Nc":2},
-      "jarOut":{"Normal":1,"Chilled":2},
+      "jarOut":{"Normal":4,"Chilled":3,"Nc":2},
+      "jarIn":{"Normal":1,"Chilled":2},
       "payments":{"status":"paid","amount":"520.00","via":"cash"}
     },
       {
         "details":{"time":"4:00 PM","deliveryPerson":"Johny"},
-        "jarIn":{"Normal":4,"Chilled":0,"Nc":0},
-        "jarOut":{"Normal":1,"Chilled":0},
+        "jarOut":{"Normal":4,"Chilled":0,"Nc":0},
+        "jarIn":{"Normal":1,"Chilled":0},
         "payments":{"status":"unpaid","amount":"60.00","via":""}
       },
       {
         "details":{"time":"7:15 PM","deliveryPerson":"Big Test user name"},
-        "jarIn":{"Normal":4,"Chilled":3,"Nc":2},
-        "jarOut":{"Normal":1,"Chilled":2},
+        "jarOut":{"Normal":4,"Chilled":3,"Nc":2},
+        "jarIn":{"Normal":1,"Chilled":2},
         "payments":{"status":"paid","amount":"520.00","via":"cash"}
       },
       {
         "details":{"time":"9:00 PM","deliveryPerson":"Johny"},
-        "jarIn":{"Normal":4,"Chilled":0,"Nc":0},
-        "jarOut":{"Normal":1,"Chilled":0},
+        "jarOut":{"Normal":4,"Chilled":0,"Nc":0},
+        "jarIn":{"Normal":1,"Chilled":0},
         "payments":{"status":"unpaid","amount":"60.00","via":""}
       }
     ]

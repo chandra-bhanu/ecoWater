@@ -66,16 +66,16 @@ class DeliveryJarIn
 {
   int normal;
   int chilled;
-  int nc;
 
-  DeliveryJarIn({required this.normal,required this.chilled,required this.nc});
+
+  DeliveryJarIn({required this.normal,required this.chilled});
 
   factory DeliveryJarIn.fromJson(Map<String, dynamic> json)
   {
     return DeliveryJarIn(
       normal: json['Normal'],
       chilled: json['Chilled'],
-      nc: json['Nc'],
+
     );
   }
 
@@ -84,16 +84,17 @@ class DeliveryJarIn
 
 class DeliveryJarOut
 {
-  int normal;
-  int chilled;
-
-  DeliveryJarOut({required this.normal,required this.chilled});
+  int? normal;
+  int? chilled;
+  int? nc;
+  DeliveryJarOut({required this.normal,required this.chilled,required this.nc});
 
   factory DeliveryJarOut.fromJson(Map<String, dynamic> json)
   {
     return DeliveryJarOut(
       normal: json['Normal'],
       chilled: json['Chilled'],
+      nc: json['Nc'],
     );
   }
 
