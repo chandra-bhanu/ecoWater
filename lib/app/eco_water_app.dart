@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:eco_water_app/app/app_theme.dart';
 import 'package:eco_water_app/app/app_icons.dart';
 
-
 import '../ui/auth/login_page.dart';
 import '../ui/customers/customers_details_page.dart';
 import '../ui/customers/list_page.dart';
@@ -21,7 +20,7 @@ class EcoWaterApp extends StatelessWidget {
       title: 'Splash Screen',
       debugShowCheckedModeBanner: false,
       home: FlashPage(),
-      theme: AppThemeDataFactory.prepareThemeData() ,
+     theme: AppThemeDataFactory.prepareThemeData(),
       routes: {
         'home': (context) => HomePage(),
         'profile': (context) => ProfilePage(),

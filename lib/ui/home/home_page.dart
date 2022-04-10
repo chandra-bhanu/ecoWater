@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green,
           onPressed: () => setState(() {}),
-          tooltip: 'New Delivery',
+          tooltip: 'New Entry',
           child: const Icon(Icons.add_shopping_cart_outlined),
           ),
           floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

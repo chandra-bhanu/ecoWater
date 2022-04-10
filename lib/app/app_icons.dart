@@ -14,6 +14,11 @@ class AppIcons {
   static String chilledJar='$_basePath/chilled-jar.png';
   static String mixJar='$_basePath/nc-jar.png';
 
+  static String normalJarIn='$_basePath/normal-jar-in.png';
+  static String normalJarOut='$_basePath/normal-jar-out.png';
+  static String chilledJarIn='$_basePath/chilled-jar-in.png';
+  static String chilledJarOut='$_basePath/chilled-jar-out.png';
+  static String mixJarIn='$_basePath/nc-jar-in.png';
 
 
 

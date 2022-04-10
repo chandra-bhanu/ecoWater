@@ -27,3 +27,24 @@ class JarIcons extends StatelessWidget {
     );
   }
 }
+
+class DeliveryJarIcons extends StatelessWidget {
+  final String iconPath;
+  final double iconWidth;
+  final double iconHeight;
+
+  const DeliveryJarIcons(this.iconPath,this.iconWidth,this.iconHeight);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset(
+          iconPath,
+          width: iconWidth,
+          height: iconHeight,
+        )
+      ],
+    );
+  }
+}

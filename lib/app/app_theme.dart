@@ -9,9 +9,10 @@ class AppThemeDataFactory {
     colorScheme: ColorScheme.fromSwatch().copyWith(secondary: AppColors.textPrimary),
     backgroundColor: AppColors.background,
     fontFamily: "Roboto",
+
     textTheme: TextTheme(
       subtitle1: TextStyle(
-        fontSize: 72,
+        fontSize: 14,
         fontWeight: FontWeight.w500,
         color: AppColors.textPrimary,
       ),
