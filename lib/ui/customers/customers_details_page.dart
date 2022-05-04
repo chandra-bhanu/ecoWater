@@ -7,6 +7,8 @@ import 'package:eco_water_app/ui/widgets/common_widgets.dart';
 import 'package:eco_water_app/app/app_icons.dart';
 import 'package:flutter/services.dart';
 import 'list_page.dart';
+import 'package:eco_water_app/ui/customers/customer_new_entry_page.dart';
+
 
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
@@ -94,7 +96,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
      int dataIndex=Customers.indexWhere((f)=>f.id == customerId);
        return Scaffold(
          appBar: AppBar(
-           title: Text('Customer Details'),
+           title: const Text('Customer Details'),
          ),
          body: SingleChildScrollView(
            child: Column(
@@ -111,11 +113,20 @@ class _CustomersDetailsState extends State<CustomersDetails> {
            floatingActionButton: FloatingActionButton(
                     backgroundColor: Colors.green,
                     //label: Text('New Entry'),
-                    child: Icon(Icons.add_business),
-                   onPressed: () => {
-                          //Take to new entry page with id  customerId
-                   },
-               ),
+                    child: const Icon(Icons.add_business),
+                   onPressed: (){
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(
+                         builder: (context) =>  const CustomersEntry(),
+                         settings: RouteSettings(
+                           arguments: customerId,
+                         ),
+                       ),
+
+                     ).then((value) => setState(() {}));
+                   }),
+
        );
 
 
@@ -138,9 +149,9 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                       child:new Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children:  <Widget>[
-                          Text(name, style: TextStyle(color: Colors.white, fontSize: 24),),
-                          Text(address, style: TextStyle(color: Colors.white, fontSize: 14),),
-                          Text('+91-'+number, style: TextStyle(color: Colors.white, fontSize: 14),),
+                          Text(name, style: const TextStyle(color: Colors.white, fontSize: 24),),
+                          Text(address, style: const TextStyle(color: Colors.white, fontSize: 14),),
+                          Text('+91-'+number, style: const TextStyle(color: Colors.white, fontSize: 14),),
                         ],
                       ),
                 ),
@@ -174,13 +185,13 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                   // width: 5,
                    color: Colors.white,
                  ),
-                 borderRadius: BorderRadius.all(Radius.circular(10)),
+                 borderRadius: const BorderRadius.all(Radius.circular(10)),
                boxShadow: [
                  BoxShadow(
                    color: Colors.grey.withOpacity(0.5),
                    spreadRadius: 5,
                    blurRadius: 7,
-                   offset: Offset(0, 3), // changes position of shadow
+                   offset: const Offset(0, 3), // changes position of shadow
                  ),
                ],
              ),
@@ -197,7 +208,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                 child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
+                children: const [
                 Text(
                   'Balance Jars',
                   style: TextStyle(color: Colors.blue, fontSize:16,fontWeight: FontWeight.bold),
@@ -216,19 +227,19 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                 children: [
                   JarIcons('Chilled', AppIcons.chilledJar, 40, 40),
                 Container(
-                 child: Text(
+                 child: const Text(
                     'X ',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     '5pc',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     '  +  ',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
@@ -237,26 +248,26 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                   JarIcons('Normal', AppIcons.normalJar, 40, 40),
 
                 Container(
-                  child: Text(
+                  child: const Text(
                     'X ',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
                 ),
 
                 Container(
-                  child: Text(
+                  child: const Text(
                     '2pc',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     '  = ',
                     style: TextStyle(color:Color(0xff4374ba), fontSize:16,fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
-                  child: Text(
+                  child: const Text(
                     '7Pc',
                     style: TextStyle(color: Color(0xff4374ba), fontSize:20,fontWeight: FontWeight.bold),
                   ),
@@ -280,7 +291,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                 padding: const EdgeInsets.only(top:10.0,bottom:10.0,left:30,right:30),
 
                 child:Column(
-                children: [
+                children: const [
 
                 Text(
                     'Paid',
@@ -302,7 +313,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                 padding: const EdgeInsets.only(top:10.0,bottom:10.0,left:30,right:30),
 
                 child:Column(
-                children: [
+                children: const [
 
                 Text(
                 'Pending',
@@ -324,14 +335,14 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                 Visibility(
                 visible:  viewVisible,
                 child: TextButton(
-                child: Text('Show Details'),
+                child: const Text('Show Details'),
                 onPressed: hideWidget,
                 ),
                 ),
                 Visibility(
                    visible: !viewVisible,
                    child: TextButton(
-                     child: Text('Hide Details'),
+                     child: const Text('Hide Details'),
                      onPressed: showWidget,
                    ),
                  ),
@@ -343,16 +354,15 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                   maintainState: true,
                                   visible: !viewVisible,
                                       child: Container(
-
                                           padding: const EdgeInsets.only(top:5.0,bottom:5.0,left:10.0,right:10.0),
                                           color:Colors.black12,
                                           child: Column(
                                             children: [
-                                              Text(
+                                              const Text(
                                                 'Subscription & Refill',
                                                 style: TextStyle(color: Colors.blue, fontSize:12),
                                               ),
-                                              SizedBox(height: 10),
+                                              const SizedBox(height: 10),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -362,9 +372,9 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                   Row(
                                                     children: [
                                                       JarIcons('Chilled', AppIcons.chilledJar, 20, 20),
-                                                      SizedBox(width: 5),
+                                                      const SizedBox(width: 5),
                                                       Column(
-                                                        children: [
+                                                        children: const [
                                                           Text(
                                                             'X '+'2pc',
                                                             style: TextStyle(color: Colors.blue, fontSize:12),
@@ -375,20 +385,20 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(width: 5),
-                                                      Text(
+                                                      const SizedBox(width: 5),
+                                                      const Text(
                                                         '|',
                                                         style: TextStyle(color: Colors.blue, fontSize:16),
                                                       ),
                                                     ],
                                                   ),
-                                                  SizedBox(width: 5),
+                                                  const SizedBox(width: 5),
                                                   Row(
                                                     children: [
                                                       JarIcons('NC', AppIcons.mixJar, 20, 20),
-                                                      SizedBox(width: 5),
+                                                      const SizedBox(width: 5),
                                                       Column(
-                                                        children: [
+                                                        children: const [
                                                           Text(
                                                             'X '+'1pc',
                                                             style: TextStyle(color: Colors.blue, fontSize:12),
@@ -399,20 +409,20 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                           ),
                                                         ],
                                                       ),
-                                                      SizedBox(width: 5),
-                                                      Text(
+                                                      const SizedBox(width: 5),
+                                                      const Text(
                                                         '|',
                                                         style: TextStyle(color: Colors.blue, fontSize:16),
                                                       ),
                                                     ],
                                                   ),
-                                                  SizedBox(width: 5),
+                                                  const SizedBox(width: 5),
                                                   Row(
                                                     children: [
                                                       JarIcons('Normal', AppIcons.normalJar, 20, 20),
-                                                      SizedBox(width: 5),
+                                                      const SizedBox(width: 5),
                                                       Column(
-                                                        children: [
+                                                        children: const [
                                                           Text(
                                                             'X '+'4pc',
                                                             style: TextStyle(color: Colors.blue, fontSize:12),
@@ -447,7 +457,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                     children: [
 
                                       Column(
-                                        children: [
+                                        children: const [
 
                                           Text(
                                             'Security Paid',
@@ -459,9 +469,9 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(width: 30),
+                                      const SizedBox(width: 30),
                                       Column(
-                                        children: [
+                                        children: const [
                                           Text(
                                             'Delivery',
                                             style: TextStyle(color: Colors.blue, fontSize:12),
@@ -472,9 +482,9 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                           ),
                                         ],
                                       ),
-                                      SizedBox(width: 30),
+                                      const SizedBox(width: 30),
                                       Column(
-                                        children: [
+                                        children: const [
                                           Text(
                                             'Billed',
                                             style: TextStyle(color: Colors.blue, fontSize:12),
@@ -537,7 +547,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                                  Text(
+                                  const Text(
                                   'Monthly Entry',
                                   style: TextStyle(color: Colors.blue, fontSize:16,fontWeight: FontWeight.bold),
                                 ),
@@ -546,7 +556,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment: CrossAxisAlignment.center,
                                     children: [
-                                      Icon(Icons.calendar_month_outlined, size: 24,color: Colors.blue,),
+                                      const Icon(Icons.calendar_month_outlined, size: 24,color: Colors.blue,),
                                       //month Changer
                                       DropdownButton<String>(
                                         hint: new Text('Report for Month'),
@@ -602,7 +612,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                         padding: const EdgeInsets.only(top:0.0, bottom:10.0),
                         child: Text(
                             '${snapshot.data!.deliveries.length} Days, This Month',
-                          style:TextStyle(fontSize: 16,color:Colors.blue,fontWeight:FontWeight.bold),
+                          style:const TextStyle(fontSize: 16,color:Colors.blue,fontWeight:FontWeight.bold),
                         ),
 
                       ),
@@ -622,16 +632,16 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                             child: Column(
                               children: [
                                 ListTile(
-                                  tileColor: Color(0xff4274BA),
+                                  tileColor: const Color(0xff4274BA),
                                   //  color:Colors.
-                                leading: CircleAvatar(
+                                leading: const CircleAvatar(
                                     child:Icon(
                                       Icons.assignment,
                                       color: Color(0xff4274BA),
                                       size: 25.0,
                                     )
                                 ),
-                                  title: Text(snapshot.data!.deliveries[index].day,style:TextStyle(fontSize: 18,color:Colors.white,fontWeight:FontWeight.bold)),
+                                  title: Text(snapshot.data!.deliveries[index].day,style:const TextStyle(fontSize: 18,color:Colors.white,fontWeight:FontWeight.bold)),
                                   subtitle: Text(
                                     '${snapshot.data!.deliveries[index].count} Entries',
                                     style: TextStyle(color: Colors.white.withOpacity(0.8)),
@@ -645,7 +655,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                               padding: const EdgeInsets.all(10),
                                               margin: const EdgeInsets.all(10),
                                               width: MediaQuery.of(context).size.width-40,
-                                              color: Color(0xFFf2f2f2),
+                                              color: const Color(0xFFf2f2f2),
                                               child: Column(
                                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                                     children: [
@@ -658,23 +668,23 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                           Row(
                                                             mainAxisAlignment: MainAxisAlignment.start,
                                                               children: [
-                                                                Icon(
+                                                                const Icon(
                                                                   Icons.access_time,
                                                                   color:  Colors.cyan,
                                                                   size: 24.0,
                                                                 ),
-                                                                Text(item.deliveryDetails.time,style:TextStyle(fontSize: 14,color:Colors.cyan,fontWeight:FontWeight.bold)),
+                                                                Text(item.deliveryDetails.time,style:const TextStyle(fontSize: 14,color:Colors.cyan,fontWeight:FontWeight.bold)),
                                                               ],
                                                             ),
                                                           Row(
                                                           //  textDirection:
                                                             children: [
-                                                              Icon(
+                                                              const Icon(
                                                                 Icons.account_circle,
                                                                 color:  Colors.cyan,
                                                                 size: 24.0,
                                                               ),
-                                                              Text(item.deliveryDetails.deliveryPerson.length>15?item.deliveryDetails.deliveryPerson.substring(0,15):item.deliveryDetails.deliveryPerson,style:TextStyle(fontSize: 14,color:Colors.cyan,fontWeight:FontWeight.bold)),
+                                                              Text(item.deliveryDetails.deliveryPerson.length>15?item.deliveryDetails.deliveryPerson.substring(0,15):item.deliveryDetails.deliveryPerson,style:const TextStyle(fontSize: 14,color:Colors.cyan,fontWeight:FontWeight.bold)),
                                                             ],
                                                           ),
 
@@ -682,7 +692,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                       ),
 
                                                       Container(
-                                                          color:Color(0xFFDDDDDD),
+                                                          color:const Color(0xFFDDDDDD),
                                                         height: 1,
                                                         margin: const EdgeInsets.only(top:10.0,bottom:0.0,left:0.0,right:0.0),
                                                       ),
@@ -690,12 +700,12 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                         Center(
                                                           child: Column(children:[
                                                               Container(
-                                                                padding: EdgeInsets.all(10),
+                                                                padding: const EdgeInsets.all(10),
                                                                 child: Table(
                                                                 //  border: TableBorder.all(),
                                                                  // columnWidths: const {0: FractionColumnWidth(.4), 1: FractionColumnWidth(.2), 2: FractionColumnWidth(.2)},
                                                                   children: [
-                                                                      TableRow( children: [
+                                                                      const TableRow( children: [
                                                                         Center(child: Text('Delivered',style:TextStyle(fontSize: 16,color:Colors.cyan,fontWeight:FontWeight.bold))),
                                                                         Center(child: Text('Jars Collected',style:TextStyle(fontSize: 16,color:Colors.cyan,fontWeight:FontWeight.bold))),
                                                                       ]),
@@ -705,7 +715,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                                           mainAxisAlignment: MainAxisAlignment.center,
                                                                           children: [
                                                                             JarIcons('Chilled',AppIcons.chilledJarOut, 50, 50),
-                                                                            Text('X ${item.deliveryJarOut.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                            Text('X ${item.deliveryJarOut.chilled} Pc',style:const TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
                                                                           ],
                                                                         ),
 
@@ -714,7 +724,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                                             mainAxisAlignment: MainAxisAlignment.center,
                                                                             children: [
                                                                               JarIcons('Chilled',AppIcons.chilledJarIn, 50, 50),
-                                                                              Text('X ${item.deliveryJarIn.chilled} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                              Text('X ${item.deliveryJarIn.chilled} Pc',style:const TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
                                                                             ],
                                                                           ),
 
@@ -724,14 +734,14 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                                         children: [
                                                                           JarIcons('Normal',AppIcons.normalJarOut, 50, 50),
-                                                                          Text('X ${item.deliveryJarOut.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                          Text('X ${item.deliveryJarOut.normal} Pc',style:const TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
                                                                         ],
                                                                       ),
                                                                       Row(
                                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                                         children: [
                                                                           JarIcons('Normal',AppIcons.normalJarIn, 50, 50),
-                                                                          Text('X ${item.deliveryJarIn.normal} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                          Text('X ${item.deliveryJarIn.normal} Pc',style:const TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
                                                                         ],
                                                                       ),
                                                                     ]),
@@ -740,12 +750,12 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                                         mainAxisAlignment: MainAxisAlignment.center,
                                                                         children: [
                                                                           JarIcons('NC Jar',AppIcons.mixJarIn, 50, 50),
-                                                                          Text('X ${item.deliveryJarOut.nc} Pc',style:TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
+                                                                          Text('X ${item.deliveryJarOut.nc} Pc',style:const TextStyle(fontSize: 16,color:Colors.black,fontWeight:FontWeight.bold)),
                                                                         ],
                                                                       ),
                                                                       Row(
                                                                         mainAxisAlignment: MainAxisAlignment.center,
-                                                                        children: [
+                                                                        children: const [
                                                                          // JarIcons('NC Jar',AppIcons.mixJarOut, 50, 50),
                                                                           Text('-'),
                                                                         ],
@@ -758,7 +768,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                         ),
                                                           // Time and Name
                                                       Container(
-                                                        color:Color(0xFFDDDDDD),
+                                                        color:const Color(0xFFDDDDDD),
                                                         height: 1,
                                                           margin: const EdgeInsets.only(top:10.0,bottom:0.0,left:0.0,right:0.0),
                                                       ),
@@ -787,7 +797,7 @@ class _CustomersDetailsState extends State<CustomersDetails> {
                                                             Chip(
                                                               avatar: CircleAvatar(
                                                                 backgroundColor: Colors.grey.shade800,
-                                                                child: Icon(
+                                                                child: const Icon(
                                                                   Icons.account_balance,
                                                                   color: Colors.amber,
                                                                   size: 15.0,
@@ -823,13 +833,13 @@ class _CustomersDetailsState extends State<CustomersDetails> {
             else if(snapshot.hasError)
               {
                 print(snapshot.toString());
-              return Center(
+              return const Center(
                         child:Text('Error!'),
                      );
               }
             else
             {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(),
               );
             }

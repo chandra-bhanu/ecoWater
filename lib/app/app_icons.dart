@@ -21,6 +21,18 @@ class AppIcons {
   static String mixJarIn='$_basePath/nc-jar-in.png';
   static String mixJarOut='$_basePath/nc-jar-out.png';
 
+  static String loadJar='$_basePath/loading-vehicle.png';
+  static String unloadJar='$_basePath/unloading-vehicle.png';
+
+  static String rightArrow='$_basePath/arrow-right.png';
+  static String downArrow='$_basePath/arrow-down.png';
+  static String leftArrow='$_basePath/arrow-left.png';
+  static String upArrow='$_basePath/arrow-up.png';
+
+
+  static String loadJarIcon='$_basePath/loading-truck.png';
+  static String unloadJarIcon='$_basePath/unloading-truck.png';
+
 
 
 }

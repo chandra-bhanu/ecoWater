@@ -3,13 +3,13 @@ import 'package:eco_water_app/app/app_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'customers_details_page.dart';
-
+import 'package:eco_water_app/ui/customers/customer_new_entry_page.dart';
 
 class CustomersList extends StatefulWidget {
   static String tag = 'customerList';
   final String customerId='';
   @override  State<StatefulWidget> createState() {
-    return new _CustomersListState();
+    return _CustomersListState();
   }
 }
 
@@ -26,8 +26,9 @@ List<Contact> Customers = [
   Contact(fullName: 'JITENDRA KUMAR', number: '7008818158', address : "DHOBADIA CHOWK,KEONJHAR",id:10),
 ];
 class _CustomersListState extends State<CustomersList> {
-  TextEditingController searchController = new TextEditingController();
+  TextEditingController searchController = TextEditingController();
    String filter='';
+   String conditionValue='';
 
   @override  initState() {
     searchController.addListener(() {
@@ -48,11 +49,11 @@ class _CustomersListState extends State<CustomersList> {
             title: Text('Customers',
                 style: TextStyle(
                     color: Colors.white, fontWeight: FontWeight.bold))),
-        body: new Column(
+        body: Column(
           children: <Widget>[
-            new Padding(
-              padding: new EdgeInsets.all(8.0),
-              child: new TextField(
+            Padding(
+              padding: EdgeInsets.all(8.0),
+              child: TextField(
                 controller: searchController,
                 decoration: InputDecoration(
                   hintText: 'Search Customers',
@@ -63,27 +64,27 @@ class _CustomersListState extends State<CustomersList> {
                 style: TextStyle(fontSize: 16),
               ),
             ),
-            new Expanded(
-              child: new ListView.builder(
+            Expanded(
+              child: ListView.builder(
                 itemCount: Customers.length,
                 itemBuilder: (context, index) {
                   // if filter is null or empty returns all data
-                  return filter == null || filter == "" ? ListTile(
+                  return filter == "" ? ListTile(
                   title: Text(
                     '${Customers[index].fullName}',
                     style: TextStyle(fontSize: 16),
                   ),
                   subtitle: Text('${Customers[index].address}'),
-                  leading: new CircleAvatar(
+                  leading: CircleAvatar(
                   backgroundColor: Colors.blue,
                   child: Text(
                   '${Customers[index].fullName.substring(0, 1)}')
 
                   ),
-                  trailing: new CircleAvatar(
+                  trailing: CircleAvatar(
                     backgroundColor: Colors.white,
 
-                    child: new TextButton(
+                    child: TextButton(
                         onPressed: () => launch('tel://${Customers[index].number}'),
                         child:Icon(Icons.call),
                        ),
@@ -98,14 +99,14 @@ class _CustomersListState extends State<CustomersList> {
                     style: TextStyle(fontSize: 16),
                   ),
                   subtitle: Text('${Customers[index].address}'),
-                  leading: new CircleAvatar(
+                  leading: CircleAvatar(
                   backgroundColor: Colors.blue,
                   child: Text(
                   '${Customers[index].fullName.substring(0, 1)}')),
-                    trailing: new CircleAvatar(
+                    trailing: CircleAvatar(
                       backgroundColor: Colors.white,
 
-                      child: new TextButton(
+                      child: TextButton(
                         onPressed: () => launch('tel://${Customers[index].number}'),
                         child:Icon(Icons.call),
                       ),
@@ -113,7 +114,7 @@ class _CustomersListState extends State<CustomersList> {
                   onTap: () =>
                   _onTapItem(context, Customers[index].id),
                   )
-                      : new Container();
+                      : Container();
                 },
               ),
             ),
@@ -122,17 +123,34 @@ class _CustomersListState extends State<CustomersList> {
   }
 
   void _onTapItem(BuildContext context, customerId) {
+   String?  conditionValue = ModalRoute.of(context)!.settings.arguments as String?;
+    if(conditionValue == 'makeEntry')
+      {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) =>  const CustomersEntry(),
+            settings: RouteSettings(
+              arguments: customerId,
+            ),
+          ),
 
-    Navigator.push(
+        ).then((value) => setState(() {}));
+
+      }
+    else{
+      Navigator.push(
         context,
         MaterialPageRoute(
-        builder: (context) =>  const CustomersDetails(),
-                              settings: RouteSettings(
-                              arguments: customerId,
-                              ),
-    ),
+          builder: (context) =>  const CustomersDetails(),
+          settings: RouteSettings(
+            arguments: customerId,
+          ),
+        ),
 
-    ).then((value) => setState(() {}));
+      ).then((value) => setState(() {}));
+      }
+
 
   }
 }

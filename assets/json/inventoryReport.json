@@ -1,0 +1,41 @@
+[
+  {
+    "id":1,
+    "employee":"Paul",
+    "date": "09-April-2022",
+    "details":{
+            "loaded": 200,
+            "delivered": 100,
+            "returnFilled": 100,
+            "emptyJars": 30,
+            "calculatedUnload": 60,
+            "actualUnload": 130
+    }
+  },
+  {
+    "id":2,
+    "employee":"John",
+    "date": "09-April-2022",
+    "details":{
+      "loaded": 250,
+      "delivered": 60,
+      "returnFilled": 100,
+      "emptyJars": 30,
+      "calculatedUnload": 90,
+      "actualUnload": 130
+    }
+  },
+  {
+    "id":3,
+    "employee":"Akash",
+    "date": "09-April-2022",
+    "details":{
+      "loaded": 100,
+      "delivered": 80,
+      "returnFilled": 120,
+      "emptyJars": 80,
+      "calculatedUnload": 90,
+      "actualUnload": 150
+    }
+  }
+]

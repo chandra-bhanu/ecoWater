@@ -3,13 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:eco_water_app/app/app_theme.dart';
 import 'package:eco_water_app/app/app_icons.dart';
 
-import '../ui/auth/login_page.dart';
-import '../ui/customers/customers_details_page.dart';
-import '../ui/customers/list_page.dart';
-import '../ui/home/home_page.dart';
-import '../ui/user/profile_page.dart';
+import 'package:eco_water_app/ui/auth/login_page.dart';
+import 'package:eco_water_app/ui/customers/customers_details_page.dart';
+import 'package:eco_water_app/ui/customers/list_page.dart';
 
+import 'package:eco_water_app/ui/home/home_page.dart';
+import 'package:eco_water_app/ui/user/profile_page.dart';
 
+//Inventory Pages
+import 'package:eco_water_app/ui/inventory/inventory_entry_page.dart';
+import 'package:eco_water_app/ui/inventory/inventory_overall.dart';
+import 'package:eco_water_app/ui/inventory/inventory_update.dart';
+import 'package:eco_water_app/ui/inventory/inventory_load_jars.dart';
+import 'package:eco_water_app/ui/inventory/inventory_un_load_jars.dart';
+import 'package:eco_water_app/ui/inventory/inventory_report_page.dart';
+
+//Employee Pages
+import 'package:eco_water_app/ui/employee/employee_list_page.dart';
 
 
 
@@ -25,6 +35,13 @@ class EcoWaterApp extends StatelessWidget {
         'home': (context) => HomePage(),
         'profile': (context) => ProfilePage(),
         'customerList': (context) => CustomersList(),
+        'inventoryEntry': (context) => const InventoryList(),
+        'inventoryOverall': (context) => const InventoryOverall(),
+        'inventoryUpdate': (context) => const InventoryUpdate(),
+        'loadJars': (context) => const InventoryLoadJars(),
+        'unloadJars': (context) => const InventoryUnLoadJars(),
+        'inventoryReport': (context) => const InventoryReports(),
+        'employeeList': (context) => EmployeeList(),
       //  'customerDetails': (context) => CustomersDetails(),
       }
     );

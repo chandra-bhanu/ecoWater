@@ -22,17 +22,17 @@ Future<AllbaseData> fetchEntries() async {
 }
 
 
-class InventoryLoadJars extends StatefulWidget {
+class InventoryUnLoadJars extends StatefulWidget {
   //final int customerId;
-  const InventoryLoadJars({Key? key}) : super(key: key);
+  const InventoryUnLoadJars({Key? key}) : super(key: key);
   //const CustomersDetails({Key? key, required this.customerId}) : super(key: key);
 
   @override  State<StatefulWidget> createState() {
-    return new _InventoryLoadJarsState();
+    return new _InventoryUnLoadJarsState();
   }
 }
 
-class _InventoryLoadJarsState extends State<InventoryLoadJars> {
+class _InventoryUnLoadJarsState extends State<InventoryUnLoadJars> {
 
   Future<AllbaseData>? futureEntries;
   @override
@@ -67,7 +67,7 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
     return Scaffold(
       backgroundColor: Color(0xFFdee0df),
       appBar: AppBar(
-        title: Text('Load Jars'),
+        title: Text('UnLoad Jars'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -267,7 +267,6 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                   SizedBox(width: 25),
                   Expanded(
                     child:TextFormField(
-                      initialValue: "0",
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -284,7 +283,6 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                   SizedBox(width: 25),
                   Expanded(
                     child:TextFormField(
-                      initialValue: "0",
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -301,7 +299,6 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                   SizedBox(width: 25),
                   Expanded(
                     child:TextFormField(
-                      initialValue: "0",
                       keyboardType: TextInputType.number,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
@@ -339,7 +336,6 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                       SizedBox(width: 25),
                       Expanded(
                         child:TextFormField(
-                          initialValue: "0",
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -356,7 +352,6 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                       SizedBox(width: 25),
                       Expanded(
                         child:TextFormField(
-                          initialValue: "0",
                           keyboardType: TextInputType.number,
                           decoration: const InputDecoration(
                             border: OutlineInputBorder(),
@@ -402,8 +397,8 @@ class _InventoryLoadJarsState extends State<InventoryLoadJars> {
                     ),
                     onPressed: () {
                       const snackBar = SnackBar(
-                        content: Text('Jar Loaded!'),
-                        backgroundColor: Colors.green,
+                        content: Text('Jars UnLoaded!'),
+                        backgroundColor: Colors.red,
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                       Navigator.pop(context);

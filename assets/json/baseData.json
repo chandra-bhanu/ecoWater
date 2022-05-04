@@ -1,0 +1,18 @@
+{
+  "employees":[
+    {"name": "Employee", "id": 1},
+    {"name": "Akash", "id": 2},
+    {"name": "Bikash", "id": 3},
+    {"name": "John Doe", "id": 4},
+    {"name": "Samba", "id": 5},
+    {"name": "Golu", "id": 6}
+  ],
+  "vehicles":[
+    {"name": "Vehicle", "id": 0},
+    {"name": "SCOOTER", "id": 1},
+    {"name": "TOTO", "id": 2},
+    {"name": "LOCAL", "id": 3},
+    {"name": "TATA ACE", "id": 4}
+  ]
+}
+

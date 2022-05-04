@@ -10,13 +10,13 @@ class AppThemeDataFactory {
     backgroundColor: AppColors.background,
     fontFamily: "Roboto",
 
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       subtitle1: TextStyle(
         fontSize: 14,
         fontWeight: FontWeight.w500,
         color: AppColors.textPrimary,
       ),
-      subtitle2: TextStyle(
+      subtitle2: const TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.w600,
         color: AppColors.textPrimary,

@@ -2,7 +2,7 @@ import 'package:eco_water_app/ui/auth/signup_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_water_app/ui/home/home_page.dart';
 import 'package:eco_water_app/app/app_icons.dart';
-import 'package:eco_water_app/app/ui/auth/signup_page.dart';
+import 'package:eco_water_app/ui/auth/signup_page.dart';
 
 
 

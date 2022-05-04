@@ -1,3 +1,4 @@
+import 'package:eco_water_app/ui/customers/list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_water_app/ui/home/widgets/animated_percentage_widget.dart';
 import 'package:eco_water_app/ui/home/widgets/activities/activities_widget.dart';
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Dashboard'),
+        title: const Text('Dashboard'),
           actions: <Widget>[
                 IconButton(
                 icon: const Icon(Icons.account_circle),
@@ -50,7 +51,18 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.green,
-          onPressed: () => setState(() {}),
+          onPressed: () => setState(() {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>  CustomersList(),
+                settings: const RouteSettings(
+                  arguments: 'makeEntry',
+                ),
+              ),
+
+            ).then((value) => setState(() {}));
+          }),
           tooltip: 'New Entry',
           child: const Icon(Icons.add_shopping_cart_outlined),
           ),
@@ -83,8 +95,8 @@ class _HomePageState extends State<HomePage> {
         // ),
         //
         // ),
-        Padding(
-          padding: const EdgeInsets.only(bottom: 30.0),
+        const Padding(
+          padding: EdgeInsets.only(bottom: 30.0),
           child: Center(
             child:Text(
               'Location - Keonjhar',
@@ -104,12 +116,12 @@ class _HomePageState extends State<HomePage> {
         child: GridView.count(
             shrinkWrap: true,
             crossAxisCount: 2,
-            padding: EdgeInsets.all(3.0),
+            padding: const EdgeInsets.all(3.0),
             children: <Widget>[
               makeDashboardItem("Customers", Icons.account_circle_outlined,"customerList"),
               makeDashboardItem("Payments", Icons.account_balance_wallet_outlined,"profile"),
-              makeDashboardItem("Load/unload", Icons.airport_shuttle_outlined,"profile"),
-              makeDashboardItem("Reports", Icons.book_outlined,"profile"),
+              makeDashboardItem("Load/unload", Icons.airport_shuttle_outlined,"inventoryEntry"),
+              makeDashboardItem("Employees", Icons.assignment_ind,"employeeList"),
             ],
         ),
         ),
@@ -120,7 +132,7 @@ class _HomePageState extends State<HomePage> {
   Card makeDashboardItem(String title, IconData icon, String PageName ) {
     return Card(
         elevation: 0.0,
-        margin: new EdgeInsets.all(8.0),
+        margin: const EdgeInsets.all(8.0),
 
         child: Container(
           decoration: BoxDecoration(
@@ -131,15 +143,15 @@ class _HomePageState extends State<HomePage> {
                   color: Colors.grey.withOpacity(0.3),
                   spreadRadius: 2,
                   blurRadius: 10,
-                  offset: Offset(0, 1),
+                  offset: const Offset(0, 1),
                 )
               ],
               border: Border.all(
                 color: Colors.black12,
               ),
-              borderRadius: BorderRadius.all(Radius.circular(15))
+              borderRadius: const BorderRadius.all(Radius.circular(15))
           ),
-          child: new InkWell(
+          child: InkWell(
             onTap: () {
               Navigator.of(context).pushNamed(PageName);
             },
@@ -148,18 +160,18 @@ class _HomePageState extends State<HomePage> {
               mainAxisSize: MainAxisSize.min,
               verticalDirection: VerticalDirection.down,
               children: <Widget>[
-                SizedBox(height: 50.0),
+                const SizedBox(height: 50.0),
                 Center(
                     child: Icon(
                       icon,
                       size: 40.0,
                       color: Colors.blue,
                     )),
-                SizedBox(height: 20.0),
-                new Center(
-                  child: new Text(title,
+                const SizedBox(height: 20.0),
+                Center(
+                  child: Text(title,
                       style:
-                      new TextStyle(fontSize: 18.0, color: Colors.blue)),
+                      const TextStyle(fontSize: 18.0, color: Colors.blue)),
                 )
               ],
             ),

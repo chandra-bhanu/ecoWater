@@ -1,0 +1,5 @@
+ {
+   "chilled": {"total":500,"available": 390,"customerActive": 100 ,"customerInActive": 10,"totalCustomer": 110 },
+   "normal": {"total":1000,"available": 650,"customerActive": 320 ,"customerInActive": 30,"totalCustomer": 350 }
+ }
+

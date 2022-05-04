@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:eco_water_app/ui/home/home_page.dart';
 import 'package:eco_water_app/app/app_icons.dart';
-import 'package:eco_water_app/app/ui/auth/login_page.dart';
+import 'package:eco_water_app/ui/auth/login_page.dart';
 
 import 'dayend_page.dart';
 
