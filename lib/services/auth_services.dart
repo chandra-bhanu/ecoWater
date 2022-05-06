@@ -57,4 +57,29 @@ Future<String?> _getId() async {
   }
 
 
+Future<SignUpResponse?> logInService(String number,String password) async{
+
+  final response = await http.post(Uri.parse(userLoginApi),
+    headers: {
+      HttpHeaders.contentTypeHeader: 'application/json',
+      HttpHeaders.authorizationHeader : ''
+    },
+    body: jsonEncode(<String, String>{
+      'number': number,
+      'password': password,
+    }),
+  );
+//print(response.body.toString());
+  if(response.statusCode==200)
+  {
+    return SignUpResponse.fromJson(jsonDecode(response.body));
+  }
+  else
+  {
+    return null;
+    //throw Exception('Opps! Something went wrong.');
+  }
+
+}
+
 

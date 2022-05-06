@@ -5,6 +5,7 @@ import 'dart:convert';
 class DataReturn
 {
   int? userId;
+
   String? mobile;
   String? name;
   String? status;
@@ -23,6 +24,7 @@ class DataReturn
         statusLabel : (json['status']=="1")?'Active':'Inactive',
         registeredOn: json['created_on'],
        type: json['type'],
+
     );
   }
 

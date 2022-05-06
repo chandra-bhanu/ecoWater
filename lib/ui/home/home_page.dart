@@ -1,11 +1,15 @@
+import 'dart:async';
+
+import 'package:eco_water_app/ui/auth/login_page.dart';
 import 'package:eco_water_app/ui/customers/list_page.dart';
+import 'package:eco_water_app/ui/user/admin_profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:eco_water_app/ui/home/widgets/animated_percentage_widget.dart';
 import 'package:eco_water_app/ui/home/widgets/activities/activities_widget.dart';
 import 'package:eco_water_app/ui/home/widgets/activities/activity_widget.dart';
 import 'package:eco_water_app/app/app_icons.dart';
 import '../user/profile_page.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -17,18 +21,42 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var _loginStatus=0;
+  String? _loginName;
+  String? _userId;
+  String? _isAdminUser;
+
+
+  @override
+  void initState() {
+    super.initState();
+    getPref();
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title:  Text("$_loginName"),
           actions: <Widget>[
                 IconButton(
                 icon: const Icon(Icons.account_circle),
                 tooltip: 'Profile',
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => ProfilePage()));
+                  if (_isAdminUser=='1') {
+                      Navigator.push(
+                        context, MaterialPageRoute(builder: (_) =>
+                          const AdminProfilePage(),
+                        )
+                        );
+                  } else {
+                      Navigator.push(
+                          context, MaterialPageRoute(builder: (_) =>
+                          ProfilePage(),
+                      )
+                    );
+                  }
                 },
               ),
           ],
@@ -121,7 +149,12 @@ class _HomePageState extends State<HomePage> {
               makeDashboardItem("Customers", Icons.account_circle_outlined,"customerList"),
               makeDashboardItem("Payments", Icons.account_balance_wallet_outlined,"profile"),
               makeDashboardItem("Load/unload", Icons.airport_shuttle_outlined,"inventoryEntry"),
-              makeDashboardItem("Employees", Icons.assignment_ind,"employeeList"),
+
+              if (_isAdminUser=='1')
+                makeDashboardItem("Employees", Icons.assignment_ind,"employeeList")
+              else
+               makeDashboardItem("My Account", Icons.account_circle,"profile"),
+
             ],
         ),
         ),
@@ -179,7 +212,15 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
-
-
+  getPref() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      _loginStatus = preferences.getInt("logged_value")!;
+      _loginName = preferences.getString("logged_name");
+      _userId=preferences.getString("logged_id");
+      _isAdminUser=preferences.getString("logged_isAdmin");
+    });
+  }
 }
 

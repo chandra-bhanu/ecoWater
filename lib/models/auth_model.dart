@@ -7,13 +7,15 @@ class DataReturn
   int? userId;
   String? mobile;
   String? name;
+  int? isAdmin;
 
-  DataReturn({this.userId, this.mobile, this.name});
+  DataReturn({this.userId, this.mobile, this.name, this.isAdmin});
 
   DataReturn.fromJson(Map<String, dynamic> json) {
-    userId = json['user_id'];
+    userId = json['id'];
     mobile = json['mobile'];
     name = json['name'];
+    isAdmin=json['isAdmin'];
   }
 
 }

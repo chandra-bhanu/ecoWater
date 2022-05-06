@@ -33,6 +33,9 @@ class AppIcons {
   static String loadJarIcon='$_basePath/loading-truck.png';
   static String unloadJarIcon='$_basePath/unloading-truck.png';
 
+  static String deliveryPerson='$_basePath/delivery-person.jpg';
+  static String jarDisplay='$_basePath/jars-style.png';
+
 
 
 }

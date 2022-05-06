@@ -1,10 +1,8 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:eco_water_app/ui/home/home_page.dart';
-import 'package:eco_water_app/app/app_icons.dart';
 import 'package:eco_water_app/ui/auth/login_page.dart';
+import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-import 'dayend_page.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -18,10 +16,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile Page"),
+        title: const Text("Profile Page"),
       ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           const SizedBox(height: 10),
           _ProfileWidget(),
@@ -35,6 +33,8 @@ class _ProfilePageState extends State<ProfilePage> {
           _buildUnloadEmptyDetails(),
           const SizedBox(height: 20),
           _buildButton(),
+          const SizedBox(height: 15),
+          _buildLogoutButton(),
         ],
       ),
     );
@@ -42,10 +42,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _ProfileWidget()=>Container(
    // margin: EdgeInsets.all(10),
-    padding: EdgeInsets.all(20),
+    padding: const EdgeInsets.all(20),
     width: 90,
     height: 90,
-    child: Center(
+    child: const Center(
               child: Text("J",
                           style: TextStyle(fontSize: 35.0,
                                     fontWeight: FontWeight.bold,
@@ -65,12 +65,12 @@ class _ProfilePageState extends State<ProfilePage> {
   //
   //
   Widget _buildName() => Column(
-    children: [
+    children: const [
       Text(
         'John Doe',
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
       ),
-      const SizedBox(height: 4),
+      SizedBox(height: 4),
       Text(
         '+91- 900000001',
         style: TextStyle(color: Colors.grey),
@@ -80,8 +80,8 @@ class _ProfilePageState extends State<ProfilePage> {
   //
   Widget _buildDetails() => Column(
       children:<Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text("Today Summary",textScaleFactor: 1.5,style: TextStyle(fontWeight:FontWeight.bold,color:Colors.blue),),
         ),
                 Padding(
@@ -90,7 +90,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       border: TableBorder.all(width: 1.0, color: Colors.black),
                       children: [
                         TableRow(
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Colors.green,
                           ),
                           children: [
@@ -98,8 +98,8 @@ class _ProfilePageState extends State<ProfilePage> {
                               child:Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                                children: <Widget>[
-                                  new Text('Loaded- Filled Jars',style: TextStyle(fontSize: 20.0,
+                                children: const <Widget>[
+                                  Text('Loaded- Filled Jars',style: TextStyle(fontSize: 20.0,
                                     fontWeight: FontWeight.bold,
 
                                   ),),
@@ -114,10 +114,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             TableCell(
                               child:Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text('Chilled Jar'),
-                                  new Text('(C) Jar'),
-                                  new Text('Normal Jar'),
+                                children: const <Widget>[
+                                  Text('Chilled Jar'),
+                                  Text('(C) Jar'),
+                                  Text('Normal Jar'),
                                 ],
                               ),
                             ),
@@ -128,10 +128,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             TableCell(
                               child:Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  new Text('50pc (10pc)'),
-                                  new Text('30pc (4pc)'),
-                                  new Text('80pc (5pc)'),
+                                children: const <Widget>[
+                                  Text('50pc (10pc)'),
+                                  Text('30pc (4pc)'),
+                                  Text('80pc (5pc)'),
                                 ],
                               ),
                             ),
@@ -145,8 +145,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildEmptyDetails() => Column(
     children:<Widget>[
-      Padding(
-        padding: const EdgeInsets.all(0),
+      const Padding(
+        padding: EdgeInsets.all(0),
        // child: Text("Today Summary",textScaleFactor: 1.5,style: TextStyle(fontWeight:FontWeight.bold,color:Colors.blue),),
       ),
       Padding(
@@ -155,7 +155,7 @@ class _ProfilePageState extends State<ProfilePage> {
           border: TableBorder.all(width: 1.0, color: Colors.black),
           children: [
             TableRow(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.green,
               ),
               children: [
@@ -163,8 +163,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                    children: <Widget>[
-                      new Text('Loaded- Empty Jars',style: TextStyle(fontSize: 20.0,
+                    children: const <Widget>[
+                      Text('Loaded- Empty Jars',style: TextStyle(fontSize: 20.0,
                         fontWeight: FontWeight.bold,
 
                       ),),
@@ -179,9 +179,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('Chilled Jar'),
-                      new Text('Normal Jar'),
+                    children: const <Widget>[
+                      Text('Chilled Jar'),
+                      Text('Normal Jar'),
                     ],
                   ),
                 ),
@@ -192,9 +192,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('5pc ( 20pc )'),
-                      new Text('10pc ( 30pc )'),
+                    children: const <Widget>[
+                      Text('5pc ( 20pc )'),
+                      Text('10pc ( 30pc )'),
                     ],
                   ),
                 ),
@@ -211,8 +211,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildUnloadDetails() => Column(
     children:<Widget>[
-      Padding(
-        padding: const EdgeInsets.all(0),
+      const Padding(
+        padding: EdgeInsets.all(0),
         //child: Text("Today Summary",textScaleFactor: 1.5,style: TextStyle(fontWeight:FontWeight.bold,color:Colors.blue),),
       ),
       Padding(
@@ -221,7 +221,7 @@ class _ProfilePageState extends State<ProfilePage> {
           border: TableBorder.all(width: 1.0, color: Colors.black),
           children: [
             TableRow(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.red,
               ),
               children: [
@@ -229,8 +229,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                    children: <Widget>[
-                      new Text('Unloaded- Filled Jars',style: TextStyle(fontSize: 20.0,
+                    children: const <Widget>[
+                      Text('Unloaded- Filled Jars',style: TextStyle(fontSize: 20.0,
                         fontWeight: FontWeight.bold,
 
                       ),),
@@ -245,10 +245,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('Chilled Jar'),
-                      new Text('(C) Jar'),
-                      new Text('Normal Jar'),
+                    children: const <Widget>[
+                      Text('Chilled Jar'),
+                      Text('(C) Jar'),
+                      Text('Normal Jar'),
                     ],
                   ),
                 ),
@@ -259,10 +259,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('10pc'),
-                      new Text('20pc'),
-                      new Text('10pc'),
+                    children: const <Widget>[
+                      Text('10pc'),
+                      Text('20pc'),
+                      Text('10pc'),
                     ],
                   ),
                 ),
@@ -276,8 +276,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildUnloadEmptyDetails() => Column(
     children:<Widget>[
-      Padding(
-        padding: const EdgeInsets.all(0),
+      const Padding(
+        padding: EdgeInsets.all(0),
         //child: Text("Today Summary",textScaleFactor: 1.5,style: TextStyle(fontWeight:FontWeight.bold,color:Colors.blue),),
       ),
       Padding(
@@ -286,7 +286,7 @@ class _ProfilePageState extends State<ProfilePage> {
           border: TableBorder.all(width: 1.0, color: Colors.black),
           children: [
             TableRow(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.red,
               ),
               children: [
@@ -294,8 +294,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
 
-                    children: <Widget>[
-                      new Text('Unloaded- Empty Jars',style: TextStyle(fontSize: 20.0,
+                    children: const <Widget>[
+                      Text('Unloaded- Empty Jars',style: TextStyle(fontSize: 20.0,
                         fontWeight: FontWeight.bold,
 
                       ),),
@@ -310,9 +310,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('Chilled Jar'),
-                      new Text('Normal Jar'),
+                    children: const <Widget>[
+                      Text('Chilled Jar'),
+                      Text('Normal Jar'),
                     ],
                   ),
                 ),
@@ -323,9 +323,9 @@ class _ProfilePageState extends State<ProfilePage> {
                 TableCell(
                   child:Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      new Text('30pc'),
-                      new Text('20pc'),
+                    children: const <Widget>[
+                      Text('30pc'),
+                      Text('20pc'),
                     ],
                   ),
                 ),
@@ -340,8 +340,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget _buildCashForm()=>Column(
           children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.only(left:0.0,right: 0.0,top:10,bottom: 10),
+                      const Padding(
+                        padding: EdgeInsets.only(left:0.0,right: 0.0,top:10,bottom: 10),
                       //  padding: EdgeInsets.symmetric(horizontal: 0),
                         child: TextField(
                         decoration: InputDecoration(
@@ -354,8 +354,8 @@ class _ProfilePageState extends State<ProfilePage> {
                         ),
 
                       ),
-            Padding(
-              padding: const EdgeInsets.only(left:0.0,right: 0.0,top:10,bottom: 20),
+            const Padding(
+              padding: EdgeInsets.only(left:0.0,right: 0.0,top:10,bottom: 20),
               //  padding: EdgeInsets.symmetric(horizontal: 0),
               child: TextField(
                 maxLines: 3,
@@ -378,7 +378,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: Text(
+                child: const Text(
                   'Save',
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
@@ -415,7 +415,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         onTap: () {
                           Navigator.of(context).pop();
                         },
-                        child: CircleAvatar(
+                        child: const CircleAvatar(
                           child: Icon(Icons.close),
                           backgroundColor: Colors.red,
                         ),
@@ -428,7 +428,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       children: <Widget>[
                      //   SizedBox(height: 50),
                        const Text('Please enter to end day!', style: TextStyle(color: Colors.black, fontSize: 18),),
-                        SizedBox(height: 10),
+                        const SizedBox(height: 10),
                         _buildCashForm(),
                       ],
                     )
@@ -437,12 +437,35 @@ class _ProfilePageState extends State<ProfilePage> {
               );
             });
       },
-      child: Text(
+      child: const Text(
         'Day End',
         style: TextStyle(color: Colors.white, fontSize: 15),
       ),
     ),
   );
 
-
+  Widget _buildLogoutButton()=>Container(
+    height: 50,
+    width: 100,
+    margin: const EdgeInsetsDirectional.fromSTEB(50, 0, 50, 10),//: const EdgeInsets.all(200),
+    decoration: BoxDecoration(
+        color: Colors.red, borderRadius: BorderRadius.circular(10)),
+    child: TextButton(
+      onPressed: () async {
+        SharedPreferences preferences = await SharedPreferences.getInstance();
+         preferences.clear();
+        Navigator.pop(context);
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder:
+        (context) =>
+        const LoginPage(),
+        ),
+        );
+      },
+      child: const Text(
+        'Logout',
+        style: TextStyle(color: Colors.white, fontSize: 15),
+      ),
+    ),
+  );
 }
